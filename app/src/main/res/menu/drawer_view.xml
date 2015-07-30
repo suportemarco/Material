@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+      <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_menu_home"
+            android:icon="@drawable/ic_dashboard"
+            android:title="@string/nav_menu_home" />
+
+        <item
+            android:id="@+id/nav_menu_about"
+            android:icon="@drawable/ic_forum"
+            android:title="@string/nav_menu_about" />
+
+        <!--NAO APAGAR-->
+        <!--<item-->
+            <!--android:id="@+id/nav_viewpager"-->
+            <!--android:icon="@drawable/ic_event"-->
+            <!--android:title="PhotoView" />-->
+        <!--<item-->
+            <!--android:id="@+id/nav_subsamplingScale"-->
+            <!--android:icon="@drawable/ic_headset"-->
+            <!--android:title="SubsamplingScaleImage" />-->
+
+    </group>
+
+    <!--NAO APAGAR-->
+    <!--<item android:title="Sub items">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_sub_item1"-->
+                <!--android:icon="@drawable/ic_dashboard"-->
+                <!--android:title="Sub item 1" />-->
+            <!--<item-->
+                <!--android:id="@+id/nav_sub_item2"-->
+                <!--android:icon="@drawable/ic_forum"-->
+                <!--android:title="Sub item 2" />-->
+        <!--</menu>-->
+    <!--</item>-->
+
+</menu>
