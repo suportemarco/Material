@@ -39,8 +39,8 @@ public class DetailActivity  extends AppCompatActivity {
         CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
 
-        String colaboradorNome = HomeFragment.myCustomBeacon.getSetor().getColaboradores().get(Integer.parseInt(position)).getNome();
-        collapsingToolbar.setTitle(colaboradorNome);
+        String title = HomeFragment.myCardModelArrayList.get(Integer.parseInt(position)).getTitle();
+        collapsingToolbar.setTitle(title);
 
         loadBackdrop();
     }

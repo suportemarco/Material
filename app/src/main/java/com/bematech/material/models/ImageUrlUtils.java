@@ -71,14 +71,30 @@ public class ImageUrlUtils {
     }
 
 
+    public static ArrayList<CardModel> generateCardModelList() {
+
+        List<String> imageUrlList = getImageUrlList();
+        ArrayList<CardModel> cardModelArrayList = new ArrayList<>();
+
+        for (int i = 0; i < imageUrlList.size(); i++) {
+
+            CardModel cardModel = new CardModel( i, "Category Example", "Title " + String.valueOf(i), imageUrlList.get(i));
+            cardModelArrayList.add(cardModel);
+
+        }
+
+        return cardModelArrayList;
+
+    }
+
     public static CustomBeacon createCustomBeacon(String nomeSetor, int qtdColaboradores) {
 
         List<String> imageUrlList = getImageUrlList();
         ArrayList<Colaborador> colaboradores = new ArrayList<>();
         CustomBeacon customBeacon = new CustomBeacon();
 
-        Setor setor = new Setor();
-        setor.setNome(nomeSetor);
+        Category category = new Category();
+        category.setNome(nomeSetor);
 
         for (int i = 0; i < qtdColaboradores; i++) {
             Colaborador colaborador = new Colaborador();
@@ -87,22 +103,22 @@ public class ImageUrlUtils {
             colaborador.setImageUrl(imageUrlList.get(i));
             colaboradores.add(colaborador);
         }
-        setor.setColaboradores(colaboradores);
-        customBeacon.setSetor(setor);
+        category.setColaboradores(colaboradores);
+        customBeacon.setCategory(category);
 
         return customBeacon;
 
     }
 
-    public static ArrayList<Setor> geraListaSetores() {
+    public static ArrayList<Category> geraListaSetores() {
 
-        ArrayList<Setor> setores = new ArrayList<>();
+        ArrayList<Category> setores = new ArrayList<>();
         List<String> imageUrlList = getImageUrlList();
         ArrayList<Colaborador> colaboradores = new ArrayList<>();
 
         for (int i = 0; i < 6; i++) {
-            Setor setor = new Setor();
-            setor.setNome("Setor " + String.valueOf(i + 1));
+            Category category = new Category();
+            category.setNome("Category " + String.valueOf(i + 1));
 
             for (int j = 0; j < 5; j++) {
                 for (int k = 0; k < 10; k++) {
@@ -112,11 +128,11 @@ public class ImageUrlUtils {
                     colaborador.setImageUrl(imageUrlList.get(i));
 
                     colaboradores.add(colaborador);
-                    setor.setColaboradores(colaboradores);
+                    category.setColaboradores(colaboradores);
                 }
             }
 
-            setores.add(setor);
+            setores.add(category);
 
 
         }

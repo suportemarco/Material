@@ -5,12 +5,12 @@ import java.util.ArrayList;
 /**
  * Created by c1401895 on 06/07/2015.
  */
-public class Setor {
+public class Category {
 
     private String nome;
     private ArrayList<Colaborador> colaboradores;
 
-    public Setor() {
+    public Category() {
     }
 
     public String getNome() {

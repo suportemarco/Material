@@ -6,7 +6,7 @@ package com.bematech.material.models;
 public class CustomBeacon {
 
     private String nome;
-    private Setor setor;
+    private Category category;
 
     public CustomBeacon() {
 
@@ -21,11 +21,11 @@ public class CustomBeacon {
     }
 
 
-    public Setor getSetor() {
-        return setor;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setSetor(Setor setor) {
-        this.setor = setor;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
