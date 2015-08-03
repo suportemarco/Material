@@ -14,11 +14,10 @@ import com.bematech.material.models.ImageUrlUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 
-
 /**
  * Created by c1401895 on 03/07/2015.
  */
-public class DetailActivity  extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "position";
     String position;
@@ -46,11 +45,7 @@ public class DetailActivity  extends AppCompatActivity {
     }
 
     private void loadBackdrop() {
-//        final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
-//        Glide.with(this).load(Cheeses.getRandomCheeseDrawable()).centerCrop().into(imageView);
-
-//        Uri uri = Uri.parse("https://raw.githubusercontent.com/facebook/fresco/gh-pages/static/fresco-logo.png");
-        Uri uri = Uri.parse( ImageUrlUtils.getImageUrlList().get(Integer.parseInt(position)));
+        Uri uri = Uri.parse(ImageUrlUtils.getImageUrlList().get(Integer.parseInt(position)));
         SimpleDraweeView imageView = (SimpleDraweeView) findViewById(R.id.backdrop);
         imageView.setImageURI(uri);
 

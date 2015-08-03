@@ -21,9 +21,6 @@ import com.bematech.material.fragments.HomeFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
@@ -126,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
                             menuItem.setChecked(true);
                             return true;
                         }
+
 // else if (menuItem.getItemId() == R.id.nav_gifview) {
 //                            Intent intent = new Intent(MainActivity.this, CustomGifViewActivity.class);
 //                            startActivity(intent);

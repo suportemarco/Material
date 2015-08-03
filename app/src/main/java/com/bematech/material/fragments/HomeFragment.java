@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -31,7 +32,7 @@ import java.util.ArrayList;
  */
 public class HomeFragment extends Fragment {
 
-    private static MainActivity mActivity;
+  private static MainActivity mActivity;
 
    public static ArrayList<CardModel> myCardModelArrayList = new ArrayList<>();
 
@@ -46,11 +47,11 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         RecyclerView rv = (RecyclerView) inflater.inflate(R.layout.fragment_home, container, false);
-        setupRecyclerView(rv);
+        rv =  setupRecyclerView(rv);
         return rv;
     }
 
-    private void setupRecyclerView(RecyclerView recyclerView) {
+    private RecyclerView setupRecyclerView(RecyclerView recyclerView) {
 
         //NAO APAGAR
 //        if (ImageListFragment.this.getArguments().getInt("type") == 1) {
@@ -67,27 +68,25 @@ public class HomeFragment extends Fragment {
 
 //        Grid
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        //recyclerView.setLayoutManager(layoutManager);
 
 //        Normal
-//        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(recyclerView.getContext());
 
 //       Obrigatorio
-//        SimpleStringRecyclerViewAdapter simpleAdapter = new SimpleStringRecyclerViewAdapter(recyclerView, ImageUrlUtils.createCustomBeacon("Relacionamento", 20));
         MyRecyclerViewAdapter simpleAdapter = new MyRecyclerViewAdapter(recyclerView, ImageUrlUtils.generateCardModelList());
-        //recyclerView.setAdapter(simpleAdapter);
 
-        //Testar
-        AvocarrotInstreamRecyclerView avocarrotInstreamRecyclerView = new AvocarrotInstreamRecyclerView(simpleAdapter, getActivity(), "07df546f308d05bc19856fba4a61c54be8a0bd56", "809007991dbbaf8c94a4ed52a7fe27d51962f539");
-        // Configure AvocarrotInstreamRecyclerView
+        //Avocarrot
+        String mainId = "07df546f308d05bc19856fba4a61c54be8a0bd56";
+        String listId = "6d97136f7cad66fe6a5c7f18613de54b4b9322f0";
+        String feedId = "809007991dbbaf8c94a4ed52a7fe27d51962f539";
+
+        AvocarrotInstreamRecyclerView avocarrotInstreamRecyclerView = new AvocarrotInstreamRecyclerView(simpleAdapter, getActivity(), mainId, listId);
         avocarrotInstreamRecyclerView.setSandbox(true);
-        avocarrotInstreamRecyclerView.setLogger(true, "ALL");
-        // Activate AvocarrotInstreamRecyclerView
-        recyclerView.setLayoutManager(staggeredGridLayoutManager);
-        // recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
+        avocarrotInstreamRecyclerView.setLogger(false, "ALL");
+        recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(avocarrotInstreamRecyclerView);
+
+        return recyclerView;
     }
 
     public static class MyRecyclerViewAdapter
@@ -115,7 +114,6 @@ public class HomeFragment extends Fragment {
             HomeFragment.myCardModelArrayList = cardModelArrayList;
 
           }
-
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -159,6 +157,5 @@ public class HomeFragment extends Fragment {
             return cardModelArrayList.size();
         }
     }
-
 
 }
