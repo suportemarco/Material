@@ -20,7 +20,6 @@ import com.bematech.material.R;
 import com.bematech.material.activities.DetailActivity;
 import com.bematech.material.activities.MainActivity;
 import com.bematech.material.models.CardModel;
-import com.bematech.material.models.CustomBeacon;
 import com.bematech.material.models.ImageUrlUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -34,7 +33,6 @@ public class HomeFragment extends Fragment {
 
     private static MainActivity mActivity;
 
-    public static CustomBeacon myCustomBeacon;
    public static ArrayList<CardModel> myCardModelArrayList = new ArrayList<>();
 
     @Override
@@ -46,8 +44,6 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        View v = inflater.inflate(R.layout.fragment_home,container,false);
-//        return v;
 
         RecyclerView rv = (RecyclerView) inflater.inflate(R.layout.fragment_home, container, false);
         setupRecyclerView(rv);
@@ -156,16 +152,6 @@ public class HomeFragment extends Fragment {
                 }
             });
 
-            //NAO APAGAR
-//            holder.mImageView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(mActivity, ViewPagerActivity.class);
-//                    intent.putExtra("position", position);
-//                    mActivity.startActivity(intent);
-//
-//                }
-//            });
         }
 
         @Override
@@ -174,100 +160,5 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    public static class SimpleStringRecyclerViewAdapter
-            extends RecyclerView.Adapter<SimpleStringRecyclerViewAdapter.ViewHolder> {
 
-        private String[] mValues;
-        private RecyclerView mRecyclerView;
-        private CustomBeacon customBeacon;
-
-        public static class ViewHolder extends RecyclerView.ViewHolder {
-            public final View mView;
-            public final SimpleDraweeView mImageView;
-//            public final TextView colaboradorNome;
-//            public final TextView colaboradorEmail;
-
-            public ViewHolder(View view) {
-                super(view);
-                mView = view;
-
-                mImageView = (SimpleDraweeView) view.findViewById(R.id.image1);
-                // colaboradorNome = (TextView) view.findViewById(R.id.colaborador_nome);
-                // colaboradorEmail = (TextView) view.findViewById(R.id.colaborador_email);
-
-            }
-        }
-
-        public SimpleStringRecyclerViewAdapter(RecyclerView recyclerView, CustomBeacon customBeacon) {
-            this.customBeacon = customBeacon;
-            mRecyclerView = recyclerView;
-
-            HomeFragment.myCustomBeacon = customBeacon;
-        }
-
-        public SimpleStringRecyclerViewAdapter(RecyclerView recyclerView, String[] items) {
-            mValues = items;
-            mRecyclerView = recyclerView;
-        }
-
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_grid, parent, false);
-            return new ViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(final ViewHolder holder, final int position) {
-
-//            NAO APAGAR
-            //FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) holder.mImageView.getLayoutParams();
-            if (mRecyclerView.getLayoutManager() instanceof GridLayoutManager) {
-                //layoutParams.height = 200;
-            } else if (mRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager) {
-                //layoutParams.height = 600;
-                //layoutParams.height = 450;
-            } else {
-                //layoutParams.height = 800;
-            }
-            //Uri uri = Uri.parse(mValues[position]);
-            String colaboradorImageUrl = customBeacon.getCategory().getColaboradores().get(position).getImageUrl();
-            String colaboradorNome = customBeacon.getCategory().getColaboradores().get(position).getNome();
-            String colaboradorEmail = customBeacon.getCategory().getColaboradores().get(position).getEmail();
-
-            Uri uri = Uri.parse(colaboradorImageUrl);
-            holder.mImageView.setImageURI(uri);
-
-//            holder.colaboradorNome.setText(colaboradorNome);
-//            holder.colaboradorEmail.setText(colaboradorEmail);
-
-            holder.mView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Context context = v.getContext();
-
-                    Toast.makeText(context, "Posição " + String.valueOf(position), Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(context, DetailActivity.class);
-                    intent.putExtra(DetailActivity.EXTRA_POSITION, position);
-                    context.startActivity(intent);
-                }
-            });
-
-            //NAO APAGAR
-//            holder.mImageView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(mActivity, ViewPagerActivity.class);
-//                    intent.putExtra("position", position);
-//                    mActivity.startActivity(intent);
-//
-//                }
-//            });
-        }
-
-        @Override
-        public int getItemCount() {
-//            return mValues.length;
-            return customBeacon.getCategory().getColaboradores().size();
-        }
-    }
 }
