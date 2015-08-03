@@ -79,11 +79,12 @@ public class HomeFragment extends Fragment {
         String mainId = "07df546f308d05bc19856fba4a61c54be8a0bd56";
         String listId = "6d97136f7cad66fe6a5c7f18613de54b4b9322f0";
         String feedId = "809007991dbbaf8c94a4ed52a7fe27d51962f539";
+        String feedId2 = "e8f96319cfd5b1fae47e4ec1a2acc9fe89d82774";
 
-        AvocarrotInstreamRecyclerView avocarrotInstreamRecyclerView = new AvocarrotInstreamRecyclerView(simpleAdapter, getActivity(), mainId, listId);
+        AvocarrotInstreamRecyclerView avocarrotInstreamRecyclerView = new AvocarrotInstreamRecyclerView(simpleAdapter, getActivity(), mainId, feedId2);
         avocarrotInstreamRecyclerView.setSandbox(true);
         avocarrotInstreamRecyclerView.setLogger(false, "ALL");
-        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setLayoutManager(staggeredGridLayoutManager);
         recyclerView.setAdapter(avocarrotInstreamRecyclerView);
 
         return recyclerView;
