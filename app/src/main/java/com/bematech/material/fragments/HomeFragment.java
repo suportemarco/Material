@@ -81,10 +81,11 @@ public class HomeFragment extends Fragment {
         String feedId = "809007991dbbaf8c94a4ed52a7fe27d51962f539";
         String feedId2 = "e8f96319cfd5b1fae47e4ec1a2acc9fe89d82774";
 
-        AvocarrotInstreamRecyclerView avocarrotInstreamRecyclerView = new AvocarrotInstreamRecyclerView(simpleAdapter, getActivity(), mainId, feedId2);
+        AvocarrotInstreamRecyclerView avocarrotInstreamRecyclerView = new AvocarrotInstreamRecyclerView(simpleAdapter, getActivity(), mainId, feedId);
         avocarrotInstreamRecyclerView.setSandbox(true);
-        avocarrotInstreamRecyclerView.setLogger(false, "ALL");
-        recyclerView.setLayoutManager(staggeredGridLayoutManager);
+        avocarrotInstreamRecyclerView.setLogger(true, "ALL");
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setPadding(40,0,40,8);
         recyclerView.setAdapter(avocarrotInstreamRecyclerView);
 
         return recyclerView;
@@ -118,7 +119,7 @@ public class HomeFragment extends Fragment {
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_grid, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_normal, parent, false);
             return new ViewHolder(view);
         }
 
