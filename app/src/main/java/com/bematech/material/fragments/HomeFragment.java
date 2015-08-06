@@ -82,23 +82,23 @@ public class HomeFragment extends Fragment {
         String feedId2 = "e8f96319cfd5b1fae47e4ec1a2acc9fe89d82774";
         String custom = "eafbdc223ffe81c19f7eb2c6b20a3cf44b1a9d80";
 
-        AvocarrotInstreamRecyclerView avocarrotInstreamRecyclerView = new AvocarrotInstreamRecyclerView(simpleAdapter, getActivity(), mainId, custom);
+        AvocarrotInstreamRecyclerView avocarrotInstreamRecyclerView = new AvocarrotInstreamRecyclerView(simpleAdapter, getActivity(), mainId, feedId2);
         avocarrotInstreamRecyclerView.setSandbox(true);
         avocarrotInstreamRecyclerView.setLogger(true, "ALL");
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
         //recyclerView.setPadding(40,0,40,8);
         recyclerView.setPadding(5, 10, 5, 10);
 
-        avocarrotInstreamRecyclerView.setFrequency(3, 3);
-        avocarrotInstreamRecyclerView.setLayout(
-                R.layout.avo_tile_layout,
-                R.id.avo_container,
-                R.id.avo_native_headline,
-                R.id.avo_native_description,
-                0,
-                R.id.avo_native_image,
-                R.id.avo_cta_button
-        );
+//        avocarrotInstreamRecyclerView.setFrequency(3, 5);
+//        avocarrotInstreamRecyclerView.setLayout(
+//                R.layout.avo_tile_layout,
+//                R.id.avo_container,
+//                R.id.avo_native_headline,
+//                R.id.avo_native_description,
+//                0,
+//                R.id.avo_native_image,
+//                R.id.avo_cta_button
+//        );
 
         recyclerView.setAdapter(avocarrotInstreamRecyclerView);
         return recyclerView;

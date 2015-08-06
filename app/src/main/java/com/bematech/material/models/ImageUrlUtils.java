@@ -8,6 +8,7 @@ public class ImageUrlUtils {
 
     public static String[] getImageUrls() {
         String[] urls = new String[]{
+                "http://img.youtube.com/vi/oiNRu59CHW8/mqdefault.jpg",
                 "https://static.pexels.com/photos/5854/sea-woman-legs-water-medium.jpg",
                 "https://static.pexels.com/photos/6245/kitchen-cooking-interior-decor-medium.jpg",
                 "https://static.pexels.com/photos/6770/light-road-lights-night-medium.jpg",
